@@ -1,0 +1,110 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-1" id="spaceform1"></div>
+    <div class="col-md-10">
+      <form autocomplete="off"  #itemForm="ngForm">
+        <div class="form-group">
+          <!--<label for="formGroupExampleInput">Customer Id</label>-->
+          <!--<input type="text" [(ngModel)]="customerdto." class="form-control" id="formGroupExampleInput" >-->
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Item Name</label>
+          <input type="text" [(ngModel)]="itemDto.description" name="customerName" class="form-control form-control"
+                 id="formGroupExampleInput2">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Available Quantity </label>
+          <input type="text" [(ngModel)]="itemDto.availableQty" name="address" class="form-control form-control"
+                 id="formGroupExampleInfput2">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Unite Price</label>
+          <input type="text" [(ngModel)]="itemDto.unitePrice" name="telephone" class="form-control form-control"
+                 id="formGroupExampleIcnpfut2">
+        </div>
+
+
+      </form>
+    </div>
+    <div class="col-md-1 ">
+
+
+    </div>
+    <div class="col-md-10" style="text-align: center">
+
+      <button *ngIf="!isEdit" (click)="onSubmit()" [disabled]="itemForm.invalid"  type="submit"
+              class="btn btn-outline-primary btn-sm mr-2">Submit
+      </button>
+      <button *ngIf="isEdit" (click)="onSubmit()" [disabled]="itemForm.invalid"  type="submit"
+              class="btn btn-outline-primary btn-sm mr-2">Update
+      </button>
+    </div>
+
+
+  </div>
+  <div class="row" id="rowhi"></div>
+  <div class="col-md-1 ">
+
+
+  </div>
+  <div class="row" id="table"  style="height: 3px">
+    <hr style="height: 3px"> </div>
+  <!--table-->
+  <div class="row" style=" height: 20px"></div>
+
+  <div  class="row" >
+
+    <div class="col-md-1" > </div>
+    <div class="col-md-10">
+      <table class="table table-hover">
+        <thead>
+        <tr id="tablehead">
+          <th scope="col">Item Code</th>
+          <th scope="col">Description</th>
+          <th scope="col">Unite Price</th>
+          <th scope="col">Availabel Quantity</th>
+        </tr>
+        </thead>
+        <tbody *ngFor=" let ite of itemList">
+        <tr>
+          <th scope="row">{{ite.code}}</th>
+          <th scope="row">{{ite.description}}</th>
+          <th scope="row">{{ite.availableQty}}</th>
+          <th scope="row">{{ite.unitePrice}}</th>
+          <th scope="row">
+
+            <button type="button" class="btn btn-primary btn-sm" id="btngdelete" (click)="deleteItem(ite.code)">
+              DELETE
+            </button>
+            </th>
+          <th>
+            <button [routerLink]="['/main/item', ite.code]" class="btn social-btn btn-secondary" type="button" >
+
+              Edit
+            </button>
+            </th>
+
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-11" style="text-align: right">
+      <!--<input class="clearbtn" type="button" value="Clear ">-->
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-1"></div>
+  </div>
+
+</div>
+
+
